@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <script 
+          type = "text/javascript"
+          src = "{{url_for('static',filename='scripts/navigation.js')}}">
+        </script>
+        <link
+        rel = "stylesheet"
+        href = "{{url_for('static',filename='css/main.css')}}"
+        /> 
+    </header>   
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <link 
+        rel="shortcut icon"
+        href="{{url_for('static', filename='favicon.ico')}}"
+        />
+    </head>
+    
+    
+
+    <link rel="stylesheet" href = "{{url_for('static',filename='css/main.css')}}">
+    <main id="main">
+        <body>
+            {% include 'header.html' %}
+            <div id="body">
+                
+                <div id="content-2">
+                        {% block content %}                            
+                        {% endblock %} 
+                    
+                    
+                    {% if not no_reading_list%}
+                        {% include 'readinglist.html'%}
+                    {% endif %}
+                
+                
+                
+                
+                </div>
+                
+                {% include 'navigation.html'%}
+            </div>
+        </body>
+    
+        
+
+        <footer id="main-footer-fixed">
+            <button id="openbtn"class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+        </footer>
+    </main>
+    <script>
+        window.addEventListener('load', function () {
+        adjustSidebar()
+        adjustHeader()
+    })
+        window.onload = adjustSidebar()
+        window.onload = adjustHeader()
+    </script>
+</html>

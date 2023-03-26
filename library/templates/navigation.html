@@ -1,0 +1,62 @@
+<header>
+  <script 
+    type = "text/javascript"
+    src = "{{url_for('static',filename='scripts/navigation.js')}}">
+  </script>
+</header>
+
+<div id="mySidebar" class="sidebar">
+  
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="{{url_for('home_bp.home')}}"><img id="logo" src="{{ url_for('static', filename='Book.png') }}" height="100"style="display: block;margin-left: auto;margin-right: auto;"></a>
+  <h1 id="nav-header">Library Functions</h1>
+  <hr style="width:100%;text-align: left;margin-left: 0;">
+  <a href="{{url_for('home_bp.home')}}" class="w3-bar-item search-button">HOME</a>
+  <hr style="width:100%;text-align: left;margin-left: 0;">
+  <a href="{{search_url}}" class="w3-bar-item search-button">SEARCH</a>
+  <hr style="width:100%;text-align: left;margin-left: 0;">
+  <button class="dropdown-btn"> SEARCH OPTIONS </button>
+
+  <div class="dropdown-container">
+    <a id = "dropdown-text" href="{{url_for('search_bp.search_book',arg=0)}}">Search By Author</a></button>
+    <a id = "dropdown-text" href="{{url_for('search_bp.search_book',arg=1)}}">Search By Release Year</a></button>
+    <a id = "dropdown-text" href="{{url_for('search_bp.search_book',arg=2)}}">Search By Title</a></button>
+    <a id = "dropdown-text" href="{{url_for('search_bp.search_book',arg=3)}}">Search By Publisher</a></button>
+    <a id = "dropdown-text" href="{{url_for('search_bp.search_book',arg=4)}}">Search By ID</a></button>
+    <a id = "dropdown-text" href="{{url_for('search_bp.search_book',arg=5)}}">General Search</a></button>
+  </div>
+  
+  <hr style="width:100%;text-align: left;margin-left: 0;">
+  <a href="{{list_url}}" class="w3-bar-item list-button">LIST</a>
+
+  {% if session['logged_in'] %}
+    <a href="{{logout_url}}" class="w3-bar-item Register-button">LOGOUT</a>
+  {% else %}
+    <a href="{{register_url}}" class="w3-bar-item Register-button">REGISTER</a>
+    <a href="{{login_url}}" class="w3-bar-item Register-button">LOGIN</a>
+  {% endif %}
+
+  <div id="nav-footer">
+    Library Application: JCHU634
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" style="font-size: 15px;margin: 0%;padding: 0px;">Picture by AlekseyP8 (CC4)</a>
+  </div>
+  
+  <script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+  </script>
+</div>
+
+

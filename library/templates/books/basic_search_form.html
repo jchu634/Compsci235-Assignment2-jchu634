@@ -1,0 +1,97 @@
+{% extends 'layout.html' %} {% block content %}
+<main id="main">
+    
+    <div class="formwrapper">
+        <div id="general-content">
+            <form action="{{handler_url}}" method="post" role="form">
+                {{form.csrf_token}}
+                {% if data != None %}
+                    <div id="basic-search-field">
+                        {{data}}
+                    </div>
+                {% endif %}
+                {% if search_type == 0 %}
+                    <div id="basic-search-field">
+                        Fill in at least 1 field
+                    </div>
+                    <div class="form-field" id = "basic-search-field">
+                        Author Name:
+                        {{form.author_name}}
+                    </div>
+                    <div class="form-field" id = "basic-search-field">
+                        Author ID:
+                        {{form.author_id}}
+                    </div>
+
+                {% elif search_type == 1 %}
+
+                    <div class="form-field" id = "basic-search-field">
+                        Release Year:
+                        {{form.id}}
+                    </div>
+
+                {% elif search_type == 2 %}
+
+                    <div class="form-field" id = "basic-search-field">
+                        Title:
+                        {{form.name}}
+                    </div>
+
+                {% elif search_type == 3 %}
+
+                    <div class="form-field" id = "basic-search-field">
+                        Publisher Name:
+                        {{form.publisher_name}}
+                    </div>
+
+                {% elif search_type == 4 %}
+
+                    <div class="form-field" id = "basic-search-field">
+                        Book id:
+                        {{form.id}}
+                    </div>
+
+                {% elif search_type == 5 %}
+                
+                    <div class="form-field" id = "basic-search-field">
+                        {{form.author_name.label}}
+                        {{form.author_name}}
+                    </div>
+                    <div class="form-field" id = "basic-search-field">
+                        {{form.author_id.label}}
+                        {{form.author_id}}
+                    </div>
+                    <div class="form-field" id = "basic-search-field">
+                        {{form.release_year.label}}
+                        {{form.release_year}}
+                    </div>
+                    <div class="form-field" id = "basic-search-field">
+                        {{form.title.label}}
+                        {{form.title}}
+                    </div>
+                    <div class="form-field" id = "basic-search-field">
+                        {{form.publisher_name.label}}
+                        {{form.publisher_name}}
+                    </div>
+                    <div class="form-field" id = "basic-search-field">
+                        {{form.book_id.label}}
+                        {{form.book_id}}
+                    </div>
+                    <div class="form-field-searchOption" id = "basic-searchOption">
+                        {{form.searchOption.label}}
+                        {{form.searchOption}}
+                    </div>
+
+                {% endif %}
+
+                <div class="form-submit" id = "basic-search-submit">
+                    {{form.submit}}
+                </div>
+
+            </form>
+        </div>
+        
+    </div>
+</main>
+
+{% endblock %}

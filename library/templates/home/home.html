@@ -1,0 +1,16 @@
+{% extends 'layout.html' %} {% block content %}
+  <main id="general-content">
+    <button class="button button3"><a id = "button-text" href="{{search_url}}">Search for Books</a></button>
+    <button class="button button3"><a id = "button-text" href="{{list_url}}">List all Books</a></button>
+    
+    <hr style="width:100%;text-align: left;margin-left: 0;max-width: 300px;">
+    {% if session['logged_in'] %}
+      <button class="button button2"><a id = "button-text" href="{{logout_url}}">Logout</a></button>
+    {% else %}
+      <button class="button button2"><a id = "button-text" href="{{login_url}}">Login</a></button>
+      <button class="button button2"><a id = "button-text" href="{{register_url}}">Register</a></button>
+    {% endif %}
+    
+  </main>
+
+{% endblock %}

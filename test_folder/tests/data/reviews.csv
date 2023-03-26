@@ -1,0 +1,5 @@
+review-id,book-id,user-name,review_text,rating,timestamp
+0,12349663,derp,"Oh no, COVID-19 has hit New Zealand",4,2020-02-28 14:31:26
+1,12349665,derp,"Yeah Freddie, bad news",5,2020-02-28 14:39:51
+2,12349665,fmercury,I hope it's not as bad here as Italy!,3,2020-02-29 08:12:08
+3,707611,fmercury,"Doop,"TestTestTestTestTestTest",2,2018-12-19 06:47:57

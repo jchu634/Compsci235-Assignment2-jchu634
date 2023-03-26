@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}{% set no_reading_list = true %}
+
+{% block content %}
+
+<main>
+    <header>
+        <meta charset="UTF-8">
+        <title>All Books</title>
+        <script type = "text/javascript"
+            src = "{{url_for('static',filename='scripts/tableSorter.js')}}"></script>
+    </header>
+    <body id="main">
+        <h3 id="general-content">
+            <br>
+            {% set pagelength = 10 %}
+            
+            {% if ((page-1) * pagelength) > books|length %}
+                {% set page = (books|length / pagelength)  %}
+                {% if page < 1 %}
+                    {% set page = 1 %}      
+                {% endif %}
+            {% elif page < 1 %}
+                {% set page = 1 %}
+            {% endif %}
+
+            Showing {{"%.0f"|format(pagelength*(page-1)+1)}} to 
+
+            {% if pagelength *page > books|length%}
+                {{"%.0f"|format(books|length)}} out of {{"%.0f"|format(books|length)}} Entries, Press Table Headers to sort table.
+                <br>
+                Click on any ID, Title, Author, Publisher or Release year to view book or search for that criteria.
+            {% else %}
+                {{"%.0f"|format(pagelength*page)}} out of {{"%.0f"|format(books|length)}} Entries, Press Table Headers to sort table.
+                <br>
+                Click on any ID, Title, Author, Publisher or Release year to view book or search for that criteria.
+            {% endif %}
+            <br>
+        </h3>
+    </body>
+    
+    <table id = "bookTable">
+        <tr>
+            <th onclick="sortTable(0)">Id</th>
+            <th onclick="sortTable(1)">Title</th>
+            <th onclick="sortTable(2)">Author</th>
+            <th onclick="sortTable(3)">Publisher</th>
+            <th onclick="sortTable(4)">Release Year</th>
+            <th onclick="sortTable(5)">Description</th>
+        </tr>
+        {% set count = [1] %}
+        {% for book in books%}
+            {% if count[0] > ((page-1) * pagelength) and count[0] <= ((page) *pagelength)%}
+                <tr>
+                    
+                    <td><a href="{{url_for('search_bp.book_id_handler',book_id=book.book_id)}}">{{ book.book_id }}</a></td>
+                    <td><a href="{{url_for('search_bp.title_handler',title=book.title)}}">{{ book.title }}</a></td>
+                    <td>
+                        {% for authors in book.authors %}
+                            <a href="{{url_for('search_bp.author_name_handler',author_name=authors.full_name)}}">
+                            {{ authors.full_name }}
+                            </a>
+                            <a href="{{url_for('search_bp.author_id_handler',author_id=authors.unique_id)}}">
+                            {{ authors.unique_id }}<br>
+                            </a>
+                        {% endfor %}
+                    </td>
+                    <td><a href="{{url_for('search_bp.publisher_handler',publisher_name=book.publisher.name)}}">{{ book.publisher.name }}</a></td>
+                    <td><a href="{{url_for('search_bp.release_year_handler',release_year=book.release_year)}}">{{ book.release_year }}</a></td>
+                    <td>{{ book.description }}</td>
+                </tr>
+            {% endif %}
+            {% if count.append(count.pop() + 1) %}{% endif %} {# increment count by 1 #}
+        {% endfor %}
+        {% if page > 1 %}
+            <button class="button button1-inline"><a id = "button-text" href="{{url_for('book_bp.list_books',page=page-1)}}">Previous Page</a></button>
+        {% endif %}
+        {% if books|length - page*pagelength >0 %}
+            <button class="button button1-inline"><a id = "button-text" href="{{url_for('book_bp.list_books',page=page+1)}}">Next Page</a></button>
+        {% endif %}
+        
+    </table>
+</main>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'layout.html' %} {% set no_reading_list = true %}{% block content %} 
+<head>
+    <meta charset="UTF-8">
+    <title>ErrorSearch</title>
+    <script type = "text/javascript"
+            src = "{{url_for('static',filename='scripts/goBack.js')}}">
+    </script>
+    <link
+    rel = "stylesheet"
+    href = "{{url_for('static',filename='css/error.css')}}"
+    />
+</head>
+<main id="main-error">
+    
+    <div id="error-header-container">
+        <h1 id="error-header" onclick="goBack()">
+            {{error_code}}:{%if error_message%}{{error_message}} 
+            {%else%}
+                An Error Occurred, <br>
+                Please Try Again
+
+
+            {%endif%}
+            <br>Press to go Back
+        </h1>
+    </div>
+
+</main>
+{% endblock %}

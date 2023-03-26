@@ -1,0 +1,12 @@
+{% extends 'layout.html' %} {% block content %}
+    <main id="general-content">
+
+        <button class="button button1"><a id = "button-text" href="{{url_for('search_bp.search_book',arg=0)}}">Search By Author</a></button>
+        <button class="button button1"><a id = "button-text" href="{{url_for('search_bp.search_book',arg=1)}}">Search By Release Year</a></button>
+        <button class="button button1"><a id = "button-text" href="{{url_for('search_bp.search_book',arg=2)}}">Search By Title</a></button>
+        <button class="button button1"><a id = "button-text" href="{{url_for('search_bp.search_book',arg=3)}}">Search By Publisher</a></button>
+        <button class="button button1"><a id = "button-text" href="{{url_for('search_bp.search_book',arg=4)}}">Search By ID</a></button>
+        <button class="button button2"><a id = "button-text" href="{{url_for('search_bp.search_book',arg=5)}}">General Search</a></button>
+
+    </main>
+{% endblock %}

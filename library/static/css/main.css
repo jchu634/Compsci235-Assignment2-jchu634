@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone");
+* {
+    margin: 0;
+    padding: 0;
+    color: black;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Jost',sans-serif;
+}
+aside{
+  width: 40%;
+  padding-left: 15px;
+  margin-left: .5rem;
+  float: right;
+  box-shadow: inset 5px 0 5px -5px #29627e;
+  background-color: #E3D5CC;
+  height:80%;
+  min-height: 80vh;
+}
+h1{
+    /* font-size: ; */
+    text-align: left;
+    font-weight: bold;
+}
+#header {
+    width: 100%;
+    padding: 2%;
+    color:white;
+    background: rgb(229, 83, 136);
+    border-bottom: 1px solid #e0e4e8;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: left;
+    height: 10%;
+  }
+
+#header-text:hover{
+  text-shadow: 2px 2px white;
+}
+
+#nav-header {
+    color: black;
+    font-size: 30px;
+    /* padding: 20px; */
+    text-align: left;
+    margin-top: 12px;
+    margin-left: 20px;
+  }
+
+#nav-whole{
+    position:fixed;
+    width:30%;
+    height:100%;
+    background-color: rgb(229, 159, 136);
+    padding: 25px;
+    
+}
+#nav-footer{
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+}
+
+th{
+  font-size: 40px;
+  background-color: rgb(229, 217, 136);
+  text-align: center;
+}
+th:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  color: #f1f1f1;
+  cursor: pointer;
+}
+td{
+  background-color: rgb(109, 213, 204,0.3);
+  text-align: left;
+}
+th,td{
+  padding:15px;
+  
+}
+#general-content{
+  padding: 0px 20px 20px 20px;
+  float: left;
+  width: 50%;
+  min-width: none;
+}
+#general-book-content{
+  padding: 0px 20px 20px 20px;
+  float: left;
+  min-width: none;
+}
+#dropdown-text{
+  font-size:20px;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;  /* Stay in place */
+  z-index: 2;       /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #bad5cc;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px;  /* Place content 60px from the top */
+  transition: 0.5s;
+}
+
+.sidebar a,.dropdown-btn {
+  padding: 8px 16px 8px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+.sidebar a:hover,.dropdown-btn:hover {
+  color: #f1f1f1;
+}
+.search-button {
+  background-color: rgb(90, 197, 204);
+}
+.dropdown-btn {
+  font-size:20px;
+  background-color: #6dd5cc;
+  border-width: 0px;
+  width:100%;
+  text-align: left;
+}
+.dropdown-container{
+  display:none;
+  background-color: #e3d5cc;
+
+}
+.search-button:hover{
+  box-shadow: 0 12px 16px 0 #f1f1f1, 0 17px 50px 0 #f1f1f1;
+}
+
+.list-button{
+  background-color: rgb(229, 217, 136);
+}
+.list-button:hover{
+box-shadow: 0 12px 16px 0 #f1f1f1, 0 17px 50px 0 #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main-footer-sticky{
+  margin-left: 15px;
+  position:sticky;
+  bottom: 10px;
+  left: 15px;
+  z-index: 1;
+  max-height: 50px;
+}
+#main-footer-fixed{
+  position:absolute;
+  bottom: 10px;
+  left: 15px;
+  z-index: 1;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none; 
+  position:sticky;
+  bottom: 10px;
+  
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+.button {
+  border: none;
+  color: #e55388;
+  padding: 15px 15px;
+  border-radius: 25px;
+  text-align: center;
+
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: bold;
+
+  margin: 20px 2px;
+  margin-left: 20px;
+
+  cursor: pointer;
+  display: block;
+}
+.button:hover,.button-text:hover{
+  box-shadow: 0 12px 16px 0 #f1f1f1, 0 17px 50px 0 #f1f1f1;
+}
+
+.button1{
+    background-color: rgb(90, 197, 204);
+}
+
+.button1-inline{
+  background-color: rgb(90, 197, 204);
+  display: inline;
+}
+.button2{
+  background-color: rgb(229, 217, 136);
+}
+.button3{
+  background-color: #E59F88;
+}
+
+#basic-search-field,input[type="text" i],#basic-searchOption,select{
+  font-size: 25px;
+}
+#basic-search-field,#basic-search-submit,#basic-searchOption{
+  padding: 15px;
+}
+
+input[type="submit" i]{
+  font-size: 30px;
+  padding:15px;
+  background-color:#6dd5cc;
+  border-radius: 25px;
+  border-width: 0px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+.form-field{
+  font-size:30px;
+}

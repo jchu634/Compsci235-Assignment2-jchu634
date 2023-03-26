@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}{% set no_reading_list = true %}{% block content%}
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Book</title>
+    <script type = "text/javascript"
+            src = "{{url_for('static',filename='scripts/tableSorter.js')}}">
+    </script>
+    
+</head>
+<main>
+    {% if book %}
+        <br>
+        <div id="general-book-content">
+            <a href="{{url_for('search_bp.title_handler',title=book.title)}}"><h1 id = "simple-book-header">{{ book.title }}</h1></a>
+            <br>
+            <p>Book ID: <a href="{{url_for('search_bp.book_id_handler',book_id=book.book_id)}}"><b>{{ book.book_id }}</b></a></p>
+            <p>Release year: <a href="{{url_for('search_bp.release_year_handler',release_year=book.release_year)}}"><b>{{ book.release_year }}</b></a></p>
+            <p>Publisher: <a href="{{url_for('search_bp.publisher_handler',publisher_name=book.publisher.name)}}"><b>{{ book.publisher.name }}</b></a></p>
+                {% for authors in book.authors %}
+                <br><p>Author:<a href="{{url_for('search_bp.author_name_handler',author_name=authors.full_name)}}"><b>{{ authors.full_name }}</b></a></p>
+                <p>Author's Id:<a href="{{url_for('search_bp.author_id_handler',author_id=authors.unique_id)}}"><b>{{ authors.unique_id }}</b></a></p>
+                {% endfor %}
+            <br>
+            
+            <p>Description: {{ book.description }}</p>
+            {% for review in book.reviews%}
+                    <br><p>
+                        Review by {{review.user_associated.user_name}} at {{review.timestamp}}
+                        <br>Rating:<b>{{ review.rating }}/5</b>
+                        <br>
+                        {{ review.review_text}}
+                        </p>
+            {% endfor %}
+        
+            {% if form %}
+                <div class="form-wrapper">
+                    <form action="{{handler_url}}" method="post">
+                        {{form.book_id}} <!-- Need to include this hidden field as it tracks the article being reviewed. -->
+                        {{form.csrf_token}} <!-- Need to include this token - Flask WTForms requires it. -->
+                        <br>
+                        <div class ="form-field"><h3>{{form.review.label}} </h3>{{form.review(size = 100, placeholder=" Type your review", class="textarea", cols="50", rows="6", wrap="hard")}}
+                        <div class ="form-field">{{form.rating.label}} {{form.rating(pattern="[1-5]")}}
+                            {% if form.review.errors %}
+                                <ul class="errors">
+                                {% for error in form.review.errors %}
+                                    <li>{{error}}</li>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        <br>
+                        {{ form.submit }}
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+            <body onload="removeText()">
+                <div id = "temp">
+                    <div id="error-header-container">
+                        <h1 id = "simple-book-header">
+                            FLAG
+                        </h1>
+                    </div>
+                </div>
+            </body>
+    {% endif %}
+    
+
+    
+    <br>
+</main>
+
+{% endblock %}
